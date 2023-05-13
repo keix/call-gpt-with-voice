@@ -58,7 +58,7 @@ def call_openai_api(content, model = "gpt-4"):
 
 def save_and_speach(context):
 
-    mp3 = content[10:] + ".mp3"
+    mp3 = content[:10] + ".mp3"
     msg = call_openai_api(content)
 
     print(msg)
