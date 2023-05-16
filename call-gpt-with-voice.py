@@ -52,20 +52,27 @@ def call_openai_api(content, model = "gpt-4"):
                     ]
                 )
 
-    return response.choices[0].message['content']
+    return response
 
 
 
 def save_and_speach(context):
 
-    mp3 = content[:10] + ".mp3"
-    msg = call_openai_api(content)
+    res = call_openai_api(content)
+
+    msg = res.choices[0].message['content']
+    mp3 = res.id + ".mp3"
+    txt = res.id + ".txt"
 
     print(msg)
 
+    os.mkdir(content)
     tts = gTTS(msg, lang='en')
-    tts.save(mp3)
-    playsound(mp3)
+    tts.save(content + os.sep + mp3)
+    playsound(content + os.sep + mp3)
+
+    with open(content + os.sep + txt, "w") as file:
+        file.write(msg)
 
 
 
