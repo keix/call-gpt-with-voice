@@ -6,5 +6,5 @@ You can call the OpenAI API with voice, and GPT will respond to you with the ans
 ```
  $ python call-gpt-with-voice.py
 listen...
-You said: すき焼きの作り方
+You said: すき焼き
 Do you call GPT-API? [y/n]:y
